@@ -24,7 +24,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
-Aplicativo para lhe ajudar a lembrar de cuidar de suas plantas de forma fácil de acordo com cada tipo de medicação.
+Aplicativo para lhe ajudar a lembrar de tomar de seus Remedios de forma fácil de acordo com cada tipo de medicação.
 
 ## 🔖 Layout
 
