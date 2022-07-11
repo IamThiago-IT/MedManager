@@ -11,7 +11,7 @@
 <br>
 
 <p align="center">
-  <img alt="Med Manager" src=".github/Capa.png" width="100%">
+  <img alt="Med Manager" src=".github/capa.png" width="100%">
 </p>
 
 ## ✨ Tecnologias
