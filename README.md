@@ -1,11 +1,11 @@
 <h1 align="center">
-  <img alt="Plant Manager" title="Med Manager" src=".github/logo.png" />
+  <img alt="Med Manager" title="Med Manager" src=".github/logo.png" />
 </h1>
 
 <p align="center">
   <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=32B768&labelColor=000000">
 
- <img src="https://img.shields.io/static/v1?label=NLW&message=05&color=32B768&labelColor=000000" alt="IT 01" />
+ <img src="https://img.shields.io/static/v1?label=IT&message=01&color=32B768&labelColor=000000" alt="IT 01" />
 </p>
 
 <br>
