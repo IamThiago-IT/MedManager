@@ -1,56 +1,90 @@
-# Welcome to your Expo app 👋
+# MedManager 💊
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+App mobile (Android, iOS e web) para gerenciamento de medicamentos, construído com [Expo](https://docs.expo.dev/versions/v57.0.0/) e `expo-router`.
 
-## Get started
+> Status: base inicial — template Expo 57 com navegação por abas, suporte a tema claro/escuro e componentes tematizados. As funcionalidades de domínio (medicamentos, lembretes, etc.) ainda serão implementadas.
 
-1. Install dependencies
+## Stack
 
-   ```bash
-   npm install
-   ```
+| Camada | Versão |
+|---|---|
+| Expo SDK | `~57.0.11` (CLI `57.0.13`) |
+| React / React DOM | `19.2.3` |
+| React Native | `0.86.2` |
+| expo-router | `~57.0.11` (file-based routing) |
+| TypeScript | `~6.0.3` (`strict`) |
+| Animações | `react-native-reanimated 4.5.1` + `worklets` |
+| Navegação nativa | `react-native-screens`, `safe-area-context`, `gesture-handler` |
 
-2. Start the app
+Docs de referência: https://docs.expo.dev/versions/v57.0.0/
 
-   ```bash
-   npx expo start
-   ```
+## Pré-requisitos
 
-In the output, you'll find options to open the app in a
+- Node.js LTS (testado com `v24.14.1`) + npm (`11.11.0`)
+- App **Expo Go** no celular (para teste rápido) ou emulador Android / simulador iOS
+- Conta Expo (só necessária para builds EAS, não para rodar local)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## Como rodar
 
 ```bash
-npm run reset-project
+npm install
+npm run dev        # abre o Expo Dev Tools (QR code + atalhos)
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Com o servidor no ar:
 
-### Other setup steps
+| Tecla | Ação |
+|---|---|
+| `a` | abrir no Android (emulador/dispositivo) |
+| `i` | abrir no iOS (simulador) |
+| `w` | abrir no navegador (web) |
+| `m` | abrir o dev menu no dispositivo (ou chacoalhar o aparelho) |
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+Scripts disponíveis:
 
-## Learn more
+```bash
+npm run dev       # expo start
+npm run android   # expo start --android
+npm run ios       # expo start --ios
+npm run web       # expo start --web
+npm run lint      # expo lint
+npm run reset-project  # move o template atual e cria um app em branco (irreversível sem git)
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## Estrutura
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```
+src/
+├── app/               # rotas (expo-router)
+│   ├── _layout.tsx    # ThemeProvider + splash + tabs
+│   ├── index.tsx      # tela inicial
+│   └── explore.tsx    # tela de exemplos do template
+├── components/        # app-tabs, themed-text/view, animated-icon,
+│   └── ui/            # collapsible, external-link, hint-row, web-badge
+├── constants/theme.ts # cores light/dark, Spacing, Fonts
+├── hooks/             # use-color-scheme, use-theme
+└── global.css         # fontes/variáveis para web
+assets/                # ícones, splash, imagens
+scripts/               # reset-project.js
+app.json               # config Expo (slug medmanager, scheme medmanager)
+```
 
-## Join the community
+Alias de import: `@/*` → `src/*` (ver `tsconfig.json`).
 
-Join our community of developers creating universal apps.
+## Temas e plataformas
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Tema claro/escuro automático via `useColorScheme` + `ThemeProvider` do `expo-router`
+- Tokens em `src/constants/theme.ts` (`Colors`, `Spacing`, `Fonts`, `BottomTabInset`, `MaxContentWidth`)
+- Componentes com variante `.web.tsx` onde o comportamento difere no navegador
+
+## Próximos passos
+
+- [ ] Definir modelo de dados (medicamento, dose, horário)
+- [ ] Telas de domínio (lista, detalhe, cadastro)
+- [ ] Lembretes/notificações locais (`expo-notifications`)
+- [ ] Persistência local
+- [ ] Testes (`jest-expo`) e CI
+
+## Licença
+
+Ver [LICENSE](./LICENSE).
